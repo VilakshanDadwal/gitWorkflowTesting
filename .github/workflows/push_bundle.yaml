@@ -3,7 +3,7 @@ name: Create Bundle
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - 'assets/**'
 jobs:
@@ -42,7 +42,7 @@ jobs:
     - name: Create Pull Request for bundle
       if: steps.bundle.outputs.bundled == 'true'
       run: |
-        gh pr create --base master --title "Upload bundle to asset" --body "Upload bundle"
+        gh pr create --base main --title "Upload bundle to asset" --body "Upload bundle"
       env:
         GITHUB_TOKEN: ${{ steps.get_installation_token.outputs.token }}
 
